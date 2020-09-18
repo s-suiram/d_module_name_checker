@@ -67,13 +67,6 @@ void main() {
 		exit(1);
 	}
 
-	immutable inDubProj = exists("dub.sdl") || exists("dub.json");
-
-	if (!inDubProj) {
-		printNotInDub();
-		exit(1);
-	}
-
 	string root = Runtime.args[1];
 
 	if (!exists(root)) {
@@ -81,11 +74,18 @@ void main() {
 		exit(1);
 	}
 
-	string sourceDir = "/source/";
+	chdir(root);
 
-	string sourcePath = root ~ sourceDir;
+	immutable inDubProj = exists("dub.sdl") || exists("dub.json");
 
-	chdir(sourcePath);
+	if (!inDubProj) {
+		printNotInDub();
+		exit(1);
+	}
+
+	string sourceDir = "source/";
+
+	chdir(sourceDir);
 	auto dirs = dirEntries("./", SpanMode.breadth);
 
 	int problemCounter = 0;
@@ -100,7 +100,7 @@ void main() {
 			warn("No module declaration in " ~ path ~ " (may be ok)");
 			continue;
 		}
-		bool isPackage;
+		bool isPackage; // @suppress(dscanner.suspicious.unmodified)
 		immutable finalModuleStr = rawModuleToModuleString(
 				treatPackageFile(pathToModule(entry), isPackage));
 

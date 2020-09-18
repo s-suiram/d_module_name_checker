@@ -1,4 +1,4 @@
-name "module_name_checker"
+name "dmodule-check"
 description "A checker for module name"
 authors "mpardo"
 copyright "Copyright © 2020, mpardo"
