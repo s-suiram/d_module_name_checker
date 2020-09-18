@@ -5,7 +5,7 @@ import core.stdc.stdlib : exit;
 private enum MODULE_STR = "module ";
 
 private void printHelp() {
-	writefln("Usage: module-checker <dub-root-project-dir>");
+	writefln("Usage: dmodule-check <dub-root-project-dir>");
 }
 
 private void printNotInDub() {
@@ -111,10 +111,10 @@ void main() {
 				continue;
 			}
 			problemCounter++;
-			problem("Problem detected at " ~ path ~ " :\n\tModule declaration should be \""
+			problem("Problem detected in " ~ path ~ " :\n\tModule declaration should be \""
 					~ finalModuleStr ~ "\" instead of \"" ~ moduleLine ~ "\"");
 		}
 	}
 
-	writeln("Work done with ", problemCounter, problemCounter > 1 ? " problems" : " problem");
+	writeln("Project analyse done with ", problemCounter, problemCounter > 1 ? " problems" : " problem");
 }
