@@ -1,0 +1,5 @@
+name "module_name_checker"
+description "A checker for module name"
+authors "mpardo"
+copyright "Copyright © 2020, mpardo"
+license "proprietary"

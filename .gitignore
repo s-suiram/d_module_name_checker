@@ -1,0 +1,15 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/module_name_checker
+module_name_checker.so
+module_name_checker.dylib
+module_name_checker.dll
+module_name_checker.a
+module_name_checker.lib
+module_name_checker-test-*
+*.exe
+*.o
+*.obj
+*.lst
